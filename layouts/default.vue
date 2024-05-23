@@ -1,12 +1,13 @@
 <script setup lang="ts">
+
+
+
 </script>
 
 <template>
-<div>
-  <slot/>
-</div>
+    <div class="bg-black text-white font-sans">
+        <slot />
+    </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
