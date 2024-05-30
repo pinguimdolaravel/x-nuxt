@@ -1,8 +1,7 @@
-
 export default defineNuxtRouteMiddleware(() => {
-    const authenticated = true
+  const authenticated = false;
 
-    if (authenticated) {
-        return navigateTo('/', { replace: true })
-    }
-})
+  if (authenticated) {
+    return navigateTo("/", { replace: true });
+  }
+});
