@@ -1,8 +1,14 @@
 <script setup lang="ts">
+import {useAuthStore} from "~/stores/useAuthStore";
+
 definePageMeta({
   layout: "guest",
   middleware: ["guest"],
 });
+
+const authStore= useAuthStore();
+
+console.log(authStore);
 
 const form = ref({
   email: "test@example.com",
@@ -10,18 +16,11 @@ const form = ref({
 });
 
 const handleLogin = async () => {
-  await useApi("/sanctum/csrf-cookie");
-  await useApi('/login', {method: 'POST', body: form.value});
-  const user = await useApi('/api/user');
-
-  console.log(user);
+  await authStore.login(form.value);
 };
 
 const getUser = async () => {
-  await useApi("/sanctum/csrf-cookie");
-  const user = await useApi('/api/user');
-
-  console.log(user.data.value);
+  console.log(authStore.user);
 };
 </script>
 
