@@ -1,9 +1,8 @@
+import actions from "~/actions";
 
 export default defineNuxtPlugin( async (nuxtApp) => {
-    const store = useAuthStore();
-
     try {
-        await store.fetchUser();
+        await actions.auth.fetchUser();
         navigateTo('/');
     } catch (error) {
         console.error(error);
