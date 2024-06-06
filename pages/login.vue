@@ -17,6 +17,7 @@ const form = ref({
 
 const handleLogin = async () => {
   await authStore.login(form.value);
+  navigateTo("/");
 };
 
 const getUser = async () => {

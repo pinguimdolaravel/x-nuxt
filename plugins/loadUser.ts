@@ -1,6 +1,12 @@
 
-export default defineNuxtPlugin( (nuxtApp) => {
+export default defineNuxtPlugin( async (nuxtApp) => {
+    const store = useAuthStore();
 
-    // console.log('jeremias')
-
+    try {
+        await store.fetchUser();
+        navigateTo('/');
+    } catch (error) {
+        console.error(error);
+        navigateTo('/login');
+    }
 })

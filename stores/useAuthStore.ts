@@ -24,5 +24,12 @@ export const useAuthStore = defineStore('auth', () => {
         return response;
     }
 
-    return {login, user, isLoggedIn, fetchUser};
+    async function logout() {
+        await useApi('/sanctum/csrf-cookie');
+        await useApi('/logout', { method: 'POST' });
+        user.value = null;
+    }
+
+
+    return {login, user, isLoggedIn, fetchUser, logout};
 })
