@@ -7,6 +7,7 @@ export interface BaseResponse<T> {
     data: T
 }
 
+
 export default {
     auth,
     tweet
